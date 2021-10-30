@@ -4,6 +4,8 @@ import (
 	"encoding/json"
 	"net/http"
 	"strconv"
+
+	errs "github.com/Nilesh-Coherent/common-service-evnt/pkg/error"
 )
 
 // RespondJSON makes the response with payload as json format
@@ -39,16 +41,16 @@ func RespondErrorMessage(w http.ResponseWriter, code int, message string) {
 }
 
 // RespondError returns a validation error else
-// func RespondError(w http.ResponseWriter, err error) {
-// 	switch err.(type) {
-// 	case errs.ValidationError:
-// 		RespondJSON(w, http.StatusBadRequest, err)
-// 	case errs.ResourceNotFound:
-// 		RespondJSON(w, http.StatusNotFound, err)
-// 	case errs.HTTPError:
-// 		httpError := err.(errs.HTTPError)
-// 		RespondErrorMessage(w, httpError.HTTPStatus, httpError.ErrorKey)
-// 	default:
-// 		RespondErrorMessage(w, http.StatusInternalServerError, errs.ErrorCodeInternalError)
-// 	}
-// }
+func RespondError(w http.ResponseWriter, err error) {
+	switch err.(type) {
+	case errs.ValidationError:
+		RespondJSON(w, http.StatusBadRequest, err)
+	case errs.ResourceNotFound:
+		RespondJSON(w, http.StatusNotFound, err)
+	case errs.HTTPError:
+		httpError := err.(errs.HTTPError)
+		RespondErrorMessage(w, httpError.HTTPStatus, httpError.ErrorKey)
+	default:
+		RespondErrorMessage(w, http.StatusInternalServerError, errs.ErrorCodeInternalError)
+	}
+}

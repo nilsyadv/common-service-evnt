@@ -10,8 +10,6 @@ import (
 	"github.com/Nilesh-Coherent/common-service-evnt/pkg/config"
 )
 
-var dbs *gorm.DB
-
 // Database Struct
 type DB struct {
 	dbs *gorm.DB
@@ -19,8 +17,7 @@ type DB struct {
 
 // initiating db instance
 func Initdb(config config.IConfig) (*DB, error) {
-	var err error
-	dbs, err = createdb(config)
+	dbs, err := createdb(config)
 	if err != nil {
 		log.Println("Failed to Initiat DB Instance: ", err)
 		return nil, err
@@ -29,6 +26,10 @@ func Initdb(config config.IConfig) (*DB, error) {
 	return &DB{
 		dbs: dbs,
 	}, nil
+}
+
+func (db *DB) Getdb() *gorm.DB {
+	return db.dbs
 }
 
 // Will Return gorm Instance

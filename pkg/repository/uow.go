@@ -2,6 +2,8 @@ package repository
 
 import (
 	"gorm.io/gorm"
+
+	"github.com/Nilesh-Coherent/common-service-evnt/pkg/db"
 )
 
 type UOW struct {
@@ -10,21 +12,21 @@ type UOW struct {
 	committed bool
 }
 
-func NewUnitOfWork(db *gorm.DB, flag bool) *UOW {
+func NewUnitOfWork(db *db.DB, flag bool) *UOW {
 	if flag {
 		return &UOW{
-			DB:       db,
+			DB:       db.Getdb(),
 			readonly: flag,
 		}
 	}
 	return &UOW{
-		DB:       db.Begin(),
+		DB:       db.Getdb().Begin(),
 		readonly: flag,
 	}
 }
 
 func (uow *UOW) Commit() {
-	if uow.readonly != true {
+	if !uow.readonly {
 		uow.DB.Commit()
 	}
 	uow.committed = true
