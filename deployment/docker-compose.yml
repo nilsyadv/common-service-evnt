@@ -1,0 +1,22 @@
+version: '3.3'
+services:
+  postgres:
+    image: postgres:14-alpine
+    env_file:
+      - ../.envs/.local/.db
+    volumes:
+       - postgres:/data/postgres
+    ports:
+      - 5432:5432
+    networks:
+      - bastos
+    restart: unless-stopped
+
+# network setup
+networks:
+  bastos:
+    external: true
+
+# volumes mapping 
+volumes:
+    postgres:
