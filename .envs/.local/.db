@@ -1,4 +1,4 @@
-POSTGRES_USER=jkdlioeu8*i*(U)*&()
-POSTGRES_PASSWORD=owe890801827998*(&*ijskdj)
+POSTGRES_USER=baston_usr_test
+POSTGRES_PASSWORD=test
 POSTGRES_DB=bastondb
 PGDATA=/data/postgres

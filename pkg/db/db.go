@@ -34,7 +34,7 @@ func (db *DB) Getdb() *gorm.DB {
 
 // set database debug
 func (db *DB) SetDebug() {
-	db.dbs.Debug()
+	db.dbs = db.dbs.Debug()
 }
 
 // Will Return gorm Instance
