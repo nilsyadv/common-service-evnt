@@ -32,6 +32,11 @@ func (db *DB) Getdb() *gorm.DB {
 	return db.dbs
 }
 
+// set database debug
+func (db *DB) SetDebug() {
+	db.dbs.Debug()
+}
+
 // Will Return gorm Instance
 func createdb(config config.IConfig) (*gorm.DB, error) {
 	dbconn := createDBString(config)
