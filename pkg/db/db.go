@@ -7,7 +7,7 @@ import (
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 
-	"github.com/Nilesh-Coherent/common-service-evnt/pkg/config"
+	"github.com/nilsyadv/common-service-evnt/pkg/config"
 )
 
 // Database Struct

@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"strconv"
 
-	errs "github.com/Nilesh-Coherent/common-service-evnt/pkg/error"
+	errs "github.com/nilsyadv/common-service-evnt/pkg/error"
 )
 
 // RespondJSON makes the response with payload as json format

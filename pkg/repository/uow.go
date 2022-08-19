@@ -3,7 +3,7 @@ package repository
 import (
 	"gorm.io/gorm"
 
-	"github.com/Nilesh-Coherent/common-service-evnt/pkg/db"
+	"github.com/nilsyadv/common-service-evnt/pkg/db"
 )
 
 type UOW struct {

@@ -5,7 +5,7 @@ import (
 	"io/ioutil"
 	"net/http"
 
-	errs "github.com/Nilesh-Coherent/common-service-evnt/pkg/error"
+	errs "github.com/nilsyadv/common-service-evnt/pkg/error"
 )
 
 func Request(out interface{}, req *http.Request) error {

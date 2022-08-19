@@ -1,0 +1,5 @@
+package msgbroker
+
+func ConfigBroker() {
+
+}
